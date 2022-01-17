@@ -1,43 +1,19 @@
 import { Router } from "express";
+import Validation from "../../middlewares/validations/validation";
+import inventoryValidations from "../../middlewares/validations/inventory.validation";
+import { createInventoryItem } from "./inventory.controller.js";
 
 const inventoryRouter = Router();
 
 inventoryRouter.get("/", (req, res) => {
   return res.send("Complete");
 });
-// import validations from "../validations/todo.validation";
-// import { validationMW, checkTodoId } from "../middlewares/validation";
-// import {
-//   addTodoItem,
-//   getAllTodos,
-//   updateTodo,
-//   deleteTodo,
-// } from "../controllers/todo";
 
-// /**
-//  * add new tasks route
-//  */
-// todoRouter.post("/new", validations.addTodoRules(), validationMW, addTodoItem);
-
-// /**
-//  * get a list of all items route
-//  */
-// todoRouter.get("/", validations.getTodosRules(), validationMW, getAllTodos);
-
-// /**
-//  * update todo item's completed or dueDate field
-//  */
-// todoRouter.patch(
-//   "/update/:todoId",
-//   checkTodoId,
-//   validations.updateTodoRules(),
-//   validationMW,
-//   updateTodo
-// );
-
-// /**
-//  * delete todo item
-//  */
-// todoRouter.delete("/delete/:todoId", checkTodoId, deleteTodo);
+inventoryRouter.post(
+  "/",
+  inventoryValidations.createInventoryRules(),
+  Validation.validate,
+  createInventoryItem
+);
 
 export default inventoryRouter;

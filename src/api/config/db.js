@@ -1,6 +1,4 @@
-import { writeFile, promises, constants, readFile as _readFile } from "fs";
-// import appRoot from "app-root-path";
-
+import { writeFile, promises, constants } from "fs";
 class DbModule {
   constructor(filename = "db.json") {
     this.filename = filename;
@@ -44,31 +42,40 @@ class DbModule {
   }
 
   //   Logic to add data
-  //   async createNewRecord(attributes) {
-  //     // Read filecontents of the datastore
-  //     const jsonRecords = await promises.readFile(this.filename, {
-  //       encoding: "utf8",
-  //     });
+  async save(data) {
+    const items = await this.readFileContent();
+    items.push(data);
 
-  //     // Parsing JSON records in JavaScript
-  //     // object type records
-  //     const objRecord = JSON.parse(jsonRecords);
+    // Writing all records back to the file
+    await promises.writeFile(this.filename, JSON.stringify(items, null, 2));
+    return data;
+  }
 
-  //     // Adding new record
-  //     objRecord.push(attributes);
-
-  //     // Writing all records back to the file
-  //     await promises.writeFile(this.filename, JSON.stringify(objRecord, null, 2));
-
-  //     return attributes;
-  //   }
-  async readFile(filePath) {
+  async readFileContent() {
     try {
-      const data = await _readFile(filePath);
-      console.log(data.toString());
+      // Read filecontents of the datastore
+      const jsonRecords = await promises.readFile(this.filename, {
+        encoding: "utf8",
+      });
+      // Parsing JSON records in JavaScript
+      // object type records
+      const objRecord = JSON.parse(jsonRecords);
+      return objRecord;
     } catch (error) {
       console.error(`Got an error trying to read the file: ${error.message}`);
     }
+  }
+
+  async findByName(itemName) {
+    const items = await this.readFileContent();
+    const data = items.filter((item) => item.name === itemName);
+    return data[0];
+  }
+
+  async findById(itemId) {
+    const items = await this.readFileContent();
+    const data = items.filter((item) => item.id === itemId);
+    return data[0];
   }
 }
 
