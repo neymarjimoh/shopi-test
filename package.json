@@ -1,0 +1,62 @@
+{
+  "name": "shopi-test",
+  "version": "1.0.0",
+  "description": "An inventory tracking web application for a logistics company",
+  "main": "server.js",
+  "scripts": {
+    "test": "cross-env NODE_ENV=test jest --verbose",
+    "test:watch": "cross-env NODE_ENV=test jest --watch --verbose",
+    "test:ci": "cross-env NODE_ENV=test jest --coverage --verbose &&  cat ./coverage/lcov.info | coveralls",
+    "test:codacy": "cross-env NODE_ENV=test jest --coverage --verbose &&  cat ./coverage/lcov.info | codacy-coverage",
+    "test:cover": "cross-env NODE_ENV=test jest --coverage --verbose",
+    "lint": "eslint \"src/**/*.js\"",
+    "lint:fix": "eslint --fix \"src/**/*.js\"",
+    "build": "babel src --out-dir dist --delete-dir-on-start --ignore '**/*.test.js'",
+    "dev": "cross-env DEBUG=log NODE_ENV=development nodemon --exec babel-node ./src/server.js",
+    "start": "cross-env DEBUG=log NODE_ENV=production node ./dist/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neymarjimoh/shopi-test.git"
+  },
+  "keywords": [
+    "shopify",
+    "backend",
+    "intern",
+    "challenge",
+    "nodejs",
+    "API"
+  ],
+  "author": "Jimoh Rildwan Adekunle <jemohkunle2007@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/neymarjimoh/shopi-test/issues"
+  },
+  "homepage": "https://github.com/neymarjimoh/shopi-test#readme",
+  "dependencies": {
+    "app-root-path": "^3.0.0",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "debug": "^4.3.3",
+    "dotenv": "^14.1.0",
+    "express": "^4.17.2",
+    "morgan": "^1.10.0",
+    "winston": "^3.4.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.8",
+    "@babel/core": "^7.16.7",
+    "@babel/node": "^7.16.8",
+    "@babel/preset-env": "^7.16.8",
+    "babel-jest": "^27.4.6",
+    "codacy-coverage": "^3.4.0",
+    "coveralls": "^3.1.1",
+    "eslint": "^8.7.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^27.4.7",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.5.1",
+    "supertest": "^6.2.1"
+  }
+}
