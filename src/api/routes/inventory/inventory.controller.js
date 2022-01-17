@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import { InternalServerError, CustomError } from "../../utils/customError";
 import responseHandler from "../../utils/responseHandler";
 import isEmpty from "../../utils/isEmpty";
