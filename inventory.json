@@ -6,13 +6,5 @@
     "description": "No description yet",
     "stock": 1,
     "createdAt": "2022-01-17T22:12:38.860Z"
-  },
-  {
-    "id": "45e7ba1a-3f4d-4a12-87c7-923bad37936b",
-    "name": "Basket tins and sachets",
-    "price": "1590",
-    "description": "No description yet",
-    "stock": 1,
-    "createdAt": "2022-01-17T22:15:23.326Z"
   }
 ]

@@ -77,6 +77,32 @@ class DbModule {
     const data = items.filter((item) => item.id === itemId);
     return data[0];
   }
+
+  async find() {
+    return await this.readFileContent();
+  }
+
+  async update(itemId, fields) {
+    const itemToEdit = await this.findById(itemId);
+    const data = await this.readFileContent();
+    const items = data.filter((i) => i.id !== itemId);
+
+    const updated = { ...itemToEdit, ...fields };
+    items.push(updated);
+    return await this.writeToFile(
+      this.filename,
+      JSON.stringify(items, null, 2)
+    );
+  }
+
+  async delete(itemId) {
+    const data = await this.readFileContent();
+    const items = data.filter((i) => i.id !== itemId);
+    return await this.writeToFile(
+      this.filename,
+      JSON.stringify(items, null, 2)
+    );
+  }
 }
 
 export default new DbModule("inventory.json");
