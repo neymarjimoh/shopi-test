@@ -26,6 +26,14 @@ const createInventoryRules = () => {
       .withMessage("Stock cannot be empty")
       .matches(/^[0-9]*$/)
       .withMessage("Stock field must be a number"),
+    body("ownerId").notEmpty().withMessage("ownerId is required").trim(),
+    body("location").notEmpty().withMessage("Location is required"),
+    body("totalSold")
+      .optional()
+      .notEmpty()
+      .withMessage("Total sold cannot be empty")
+      .matches(/^[0-9]*$/)
+      .withMessage("Total sold must be a number"),
   ];
 };
 
@@ -54,6 +62,13 @@ const editInventoryItemRules = () => {
       .withMessage("Stock cannot be empty")
       .matches(/^[0-9]*$/)
       .withMessage("Stock field must be a number"),
+    body("totalSold")
+      .optional()
+      .notEmpty()
+      .withMessage("Total sold cannot be empty")
+      .matches(/^[0-9]*$/)
+      .withMessage("Total sold must be a number"),
+    body("location").optional().notEmpty().withMessage("Location is required"),
   ];
 };
 

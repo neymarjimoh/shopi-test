@@ -11,19 +11,24 @@ import DbModule from "../../../api/config/db";
 
 export async function createInventoryItem(req, res, next) {
   try {
-    let { name, price, description, stock } = req.body;
+    let { name, price, description, stock, ownerId, location, totalSold } =
+      req.body;
     const itemExist = await DbModule.findByName(name);
     if (itemExist) {
       return next(new CustomError(409, "Items with this name already exists"));
     }
     if (!stock) stock = 1;
+    if (!totalSold) totalSold = 0;
     if (!description) description = "No description yet";
     const inventoryItem = {
       id: uniqueID(), // genrate uniqud id
+      ownerId,
       name,
       price,
       description,
       stock,
+      location,
+      totalSold,
       createdAt: new Date(),
       updateddAt: new Date(),
     };

@@ -17,11 +17,14 @@ const inventoryRouter = Router();
 inventoryRouter.get("/items", getItems);
 
 /**
- * @description To crate inventory item
+ * @description To create inventory item
  * @param {string}name
  * @param {string}description
  * @param {string}price
  * @param {string}stock
+ * @param {string}ownerId
+ * @param {string}location
+ * @param {string}totalSold
  */
 inventoryRouter.post(
   "/",

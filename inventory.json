@@ -1,19 +1,14 @@
 [
   {
-    "id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
-    "name": "Cargo ships",
-    "price": "120",
-    "description": "No description yet",
-    "stock": 1,
-    "createdAt": "2022-01-17T22:12:38.860Z"
-  },
-  {
-    "id": "752764c8-be7a-40a3-af6f-3c49a2cad401",
-    "name": "Basket tins and sachets",
-    "price": "790",
-    "description": "No description yet",
-    "stock": 1,
-    "createdAt": "2022-01-18T01:45:56.584Z",
-    "updateddAt": "2022-01-18T01:45:56.584Z"
+    "id": "e59a513c-a82f-41ba-a465-a5f92906f67d",
+    "ownerId": "111",
+    "name": "Cargo Ships",
+    "price": "1200",
+    "description": "A cargo ship inventory",
+    "stock": "8",
+    "location": "Canada",
+    "totalSold": "3",
+    "createdAt": "2022-01-18T16:50:27.729Z",
+    "updateddAt": "2022-01-18T16:50:27.729Z"
   }
 ]

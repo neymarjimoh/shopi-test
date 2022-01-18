@@ -18,7 +18,7 @@ class DbModule {
     try {
       await promises.access(filepath, constants.F_OK);
       return true;
-    } catch {
+    } catch (e) {
       return false;
     }
   }
