@@ -1,8 +1,12 @@
-import { v4 as uuidv4 } from "uuid";
 import { InternalServerError, CustomError } from "../../utils/customError";
 import responseHandler from "../../utils/responseHandler";
 import isEmpty from "../../utils/isEmpty";
-import { paginate, sortDataByName } from "../../utils/data";
+import {
+  paginate,
+  sortDataByName,
+  uniqueID,
+  converToCSV,
+} from "../../utils/data";
 import DbModule from "../../../api/config/db";
 
 export async function createInventoryItem(req, res, next) {
@@ -15,7 +19,7 @@ export async function createInventoryItem(req, res, next) {
     if (!stock) stock = 1;
     if (!description) description = "No description yet";
     const inventoryItem = {
-      id: uuidv4(), // genrate uniqud id
+      id: uniqueID(), // genrate uniqud id
       name,
       price,
       description,
@@ -101,6 +105,17 @@ export async function deleteItem(req, res, next) {
       return next(new CustomError(404, "Could not delete item. Try again"));
     }
     return responseHandler(res, 200, deletedItem, "Item deleted successfully");
+  } catch (error) {
+    next(new InternalServerError(error));
+  }
+}
+
+export async function exportToCSV(req, res, next) {
+  try {
+    // export to CSV
+    const csv = await converToCSV();
+    res.attachment("inventory.csv");
+    return res.status(200).send(csv);
   } catch (error) {
     next(new InternalServerError(error));
   }

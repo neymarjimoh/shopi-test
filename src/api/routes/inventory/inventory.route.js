@@ -6,6 +6,7 @@ import {
   getItems,
   editItem,
   deleteItem,
+  exportToCSV,
 } from "./inventory.controller.js";
 
 const inventoryRouter = Router();
@@ -39,6 +40,14 @@ inventoryRouter.patch(
   editItem
 );
 
+/**
+ * @description To delete item in inventory
+ */
 inventoryRouter.delete("/delete/:itemId", deleteItem);
+
+/**
+ * @description To export product data to CSV format
+ */
+inventoryRouter.post("/csv", exportToCSV);
 
 export default inventoryRouter;
