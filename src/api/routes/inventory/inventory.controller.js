@@ -101,6 +101,13 @@ export async function deleteItem(req, res, next) {
       );
     }
 
+    // check if it is the owner of the item
+    if (itemExists.ownerId !== req.body.ownerId) {
+      return next(
+        new CustomError(400, "You can only delete items that you own")
+      );
+    }
+
     const deletedItem = await DbModule.delete(itemId);
     if (!deletedItem) {
       return next(new CustomError(404, "Could not delete item. Try again"));

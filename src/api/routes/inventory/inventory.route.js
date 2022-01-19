@@ -45,8 +45,14 @@ inventoryRouter.patch(
 
 /**
  * @description To delete item in inventory
+ * @param {string} ownerId must be the owner
  */
-inventoryRouter.delete("/delete/:itemId", deleteItem);
+inventoryRouter.delete(
+  "/delete/:itemId",
+  inventoryValidations.deleteItemRules(),
+  Validation.validate,
+  deleteItem
+);
 
 /**
  * @description To export product data to CSV format

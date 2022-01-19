@@ -72,6 +72,10 @@ const editInventoryItemRules = () => {
   ];
 };
 
+const deleteItemRules = () => {
+  return [body("ownerId").notEmpty().withMessage("ownerId is required").trim()];
+};
+
 const exportInventoryToCSVRules = () => {
   return [
     // ownerid is optional, if passed it returns all inventories for that owner else returns all inventories
@@ -87,4 +91,5 @@ export default {
   createInventoryRules,
   editInventoryItemRules,
   exportInventoryToCSVRules,
+  deleteItemRules,
 };
