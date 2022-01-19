@@ -1,3 +1,0 @@
-"id","ownerId","name","price","description","stock","location","totalSold","createdAt","updateddAt"
-"d5a99cf6-ec88-47f6-891d-72da8751bccc","100","Cargo Ships 55","1200","A cargo ship inventory",8,"Canada",3,"2022-01-19T09:47:21.998Z","2022-01-19T09:47:21.998Z"
-"7edf2cb5-b3a9-4b37-8788-0711842e940d","100","kit Ships 55","1200","A cargo ship inventory",8,"Canada",3,"2022-01-19T09:47:28.864Z","2022-01-19T09:47:28.864Z"
