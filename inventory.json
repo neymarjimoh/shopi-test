@@ -10,5 +10,41 @@
     "totalSold": "3",
     "createdAt": "2022-01-18T16:50:27.729Z",
     "updateddAt": "2022-01-18T16:50:27.729Z"
+  },
+  {
+    "id": "d5a99cf6-ec88-47f6-891d-72da8751bccc",
+    "ownerId": "100",
+    "name": "Cargo Ships 55",
+    "price": "1200",
+    "description": "A cargo ship inventory",
+    "stock": 8,
+    "location": "Canada",
+    "totalSold": 3,
+    "createdAt": "2022-01-19T09:47:21.998Z",
+    "updateddAt": "2022-01-19T09:47:21.998Z"
+  },
+  {
+    "id": "7edf2cb5-b3a9-4b37-8788-0711842e940d",
+    "ownerId": "100",
+    "name": "kit Ships 55",
+    "price": "1200",
+    "description": "A cargo ship inventory",
+    "stock": 8,
+    "location": "Canada",
+    "totalSold": 3,
+    "createdAt": "2022-01-19T09:47:28.864Z",
+    "updateddAt": "2022-01-19T09:47:28.864Z"
+  },
+  {
+    "id": "2e27a3b4-4e9e-444c-a943-56787ef9c268",
+    "ownerId": "101",
+    "name": "kit Ships 66",
+    "price": "1200",
+    "description": "A cargo ship inventory",
+    "stock": 8,
+    "location": "Canada",
+    "totalSold": 3,
+    "createdAt": "2022-01-19T09:47:47.367Z",
+    "updateddAt": "2022-01-19T09:47:47.367Z"
   }
 ]

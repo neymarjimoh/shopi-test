@@ -63,13 +63,26 @@ export const uniqueID = function () {
   return uuid;
 };
 
-export const converToCSV = async () => {
+export const converToCSV = async (ownerId) => {
   const jsonData = await DbModule.find();
   const fields = Object.keys(jsonData[0]);
-  //parse the fields
-  const csv = new Parser({ fields }).parse(jsonData);
+  let csv;
 
-  // export it to a csv file
-  await fs.promises.writeFile("inventory.csv", csv);
+  // check if the csv exports folder exists and create if not
+  !fs.existsSync("csv_exports") && fs.mkdirSync("csv_exports");
+  if (ownerId === null) {
+    //parse the fields
+    csv = new Parser({ fields }).parse(jsonData);
+    // export it to a csv file
+    await fs.promises.writeFile(`csv_exports/inventory_${Date.now()}.csv`, csv);
+  } else {
+    const userinventories = jsonData.filter((data) => data.ownerId === ownerId);
+    csv = new Parser({ fields }).parse(userinventories);
+    await fs.promises.writeFile(
+      `csv_exports/inventory_${ownerId}_${Date.now()}.csv`,
+      csv
+    );
+  }
+
   return csv;
 };

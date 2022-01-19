@@ -50,7 +50,13 @@ inventoryRouter.delete("/delete/:itemId", deleteItem);
 
 /**
  * @description To export product data to CSV format
+ * @param {string}ownerId is optional
  */
-inventoryRouter.post("/csv", exportToCSV);
+inventoryRouter.post(
+  "/csv",
+  inventoryValidations.exportInventoryToCSVRules(),
+  Validation.validate,
+  exportToCSV
+);
 
 export default inventoryRouter;

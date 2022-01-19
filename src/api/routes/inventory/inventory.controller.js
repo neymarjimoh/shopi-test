@@ -1,12 +1,8 @@
+import { v4 as uuidv4 } from "uuid";
 import { InternalServerError, CustomError } from "../../utils/customError";
 import responseHandler from "../../utils/responseHandler";
 import isEmpty from "../../utils/isEmpty";
-import {
-  paginate,
-  sortDataByName,
-  uniqueID,
-  converToCSV,
-} from "../../utils/data";
+import { paginate, sortDataByName, converToCSV } from "../../utils/data";
 import DbModule from "../../../api/config/db";
 
 export async function createInventoryItem(req, res, next) {
@@ -21,7 +17,7 @@ export async function createInventoryItem(req, res, next) {
     if (!totalSold) totalSold = 0;
     if (!description) description = "No description yet";
     const inventoryItem = {
-      id: uniqueID(), // genrate uniqud id
+      id: uuidv4(), // genrate unique id
       ownerId,
       name,
       price,
@@ -116,9 +112,11 @@ export async function deleteItem(req, res, next) {
 }
 
 export async function exportToCSV(req, res, next) {
+  const { ownerId } = req.body;
   try {
     // export to CSV
-    const csv = await converToCSV();
+    const id = ownerId ? ownerId : null;
+    const csv = await converToCSV(id);
     res.attachment("inventory.csv");
     return res.status(200).send(csv);
   } catch (error) {
