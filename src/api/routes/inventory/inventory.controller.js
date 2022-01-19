@@ -123,9 +123,13 @@ export async function exportToCSV(req, res, next) {
   try {
     // export to CSV
     const id = ownerId ? ownerId : null;
-    const csv = await converToCSV(id);
-    res.attachment("inventory.csv");
-    return res.status(200).send(csv);
+    responseHandler(
+      res,
+      200,
+      {},
+      "Data exported to CSV. File location in 'csv_exports' directory"
+    );
+    return await converToCSV(id);
   } catch (error) {
     next(new InternalServerError(error));
   }
