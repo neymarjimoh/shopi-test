@@ -1,4 +1,4 @@
-# Shopify Backend Developer Intern Challenge - Summer 2022
+# Summer 2022
 An inventory tracking web application for a logistics company.
 
 ## 📋 API Documentation
